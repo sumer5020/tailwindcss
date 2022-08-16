@@ -15,7 +15,6 @@ class TailwindCssPreset extends Preset
     {
         static::updatePackages();
         static::updateStyles();
-        static::updateBootstrapping();
         static::updateWelcomePage();
         static::removeNodeModules();
     }
@@ -24,6 +23,22 @@ class TailwindCssPreset extends Preset
     {
         static::scaffoldController();
         static::scaffoldAuth();
+    }
+
+    protected static function updatePackageArray(array $packages)
+    {
+        return array_merge([
+            '@tailwindcss/ui' => '^0.7',
+            'autoprefixer' => '^10.4',
+            'postcss-import' => '^14.1',
+            'postcss-nested' => '^5.0',
+            'tailwindcss' => '^3.1',
+        ], Arr::except($packages, [
+            'bootstrap',
+            'bootstrap-sass',
+            'popper.js',
+            'jquery',
+        ]));
     }
 
     protected static function updateStyles()
@@ -43,7 +58,6 @@ class TailwindCssPreset extends Preset
     protected static function updateWelcomePage()
     {
         (new Filesystem)->delete(resource_path('views/welcome.blade.php'));
-
         copy(__DIR__.'/tailwindcss-stubs/resources/views/welcome.blade.php', resource_path('views/welcome.blade.php'));
     }
 
