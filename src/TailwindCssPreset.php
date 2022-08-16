@@ -15,6 +15,7 @@ class TailwindCssPreset extends Preset
     {
         static::updatePackages();
         static::updateStyles();
+        static::updateBootstrapping();
         static::updateWelcomePage();
         static::removeNodeModules();
     }
@@ -54,6 +55,9 @@ class TailwindCssPreset extends Preset
 
         copy(__DIR__.'/tailwindcss-stubs/resources/css/app.css', resource_path('css/app.css'));
     }
+
+    protected static function updateBootstrapping()
+    {}
 
     protected static function updateWelcomePage()
     {
