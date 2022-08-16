@@ -29,11 +29,11 @@ class TailwindCssPreset extends Preset
     protected static function updatePackageArray(array $packages)
     {
         return array_merge([
-            '@tailwindcss/ui' => '^0.7',
+            '@tailwindcss/ui' => '^0.7.2',
             'autoprefixer' => '^10.4',
             'postcss-import' => '^14.1',
             'postcss-nested' => '^5.0',
-            'tailwindcss' => '^3.1',
+            'tailwindcss' => '^3.1.8',
         ], Arr::except($packages, [
             'bootstrap',
             'bootstrap-sass',
